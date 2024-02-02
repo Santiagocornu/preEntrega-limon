@@ -1,0 +1,17 @@
+* {
+    margin:0;
+}
+.parent {
+    background-color: #bfff00;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+.formulario{
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column; 
+}
