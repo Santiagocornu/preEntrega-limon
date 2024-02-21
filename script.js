@@ -1,37 +1,61 @@
+let Productos = [];
+
+function agregarProducto() {
+    let form = document.getElementById('myForm');
+    let id = form.id.value;
+    let cantidad = Number(form.quantity.value);
+    let valor = Number(form.value.value);
+    let nombre = form.name.value;
+
+    let productoExistente = Productos.find(producto => producto.id === id);
+    if (productoExistente) {
+        alert('El producto con este ID ya existe.');
+        return;
+    }
+
+    let objeto = {
+        id: id,
+        cantidad: cantidad,
+        valor: valor,
+        nombre: nombre,
+    };
+
+    Productos.push(objeto);
+    console.log(Productos);
+}
+
 document.querySelector('.formulario').addEventListener('submit', function(event) {
     event.preventDefault(); 
 
-    var nombre = document.getElementById('name').value;
-    var correoElectronico = document.getElementById('email').value;
-    var producto = document.getElementById('product').value;
-    var cantidad = document.getElementById('quantity').value;
-    var valor = document.getElementById('value').value;
-    var precio=0;
-    if (cantidad < 10) {
-        precio=valor*cantidad;
-    } else if (cantidad > 10 && cantidad <= 15) {
-        precio=(valor*cantidad)*0.95;
-    } else if (cantidad > 15) {
-        precio=(valor*cantidad)*0.85;
-    }
+    let nombre = document.getElementById('name').value;
+    let id = document.getElementById('id').value;
+    let cantidad = Number(document.getElementById('quantity').value);
+    let valor = Number(document.getElementById('value').value);
 
-    if (!nombre || !correoElectronico || !producto || !cantidad || cantidad < 1 || !valor || valor < 0) {
+    if (!nombre || !id || !cantidad || cantidad < 1 || !valor || valor < 0) {
         alert('Falta rellenar un espacio.');
-    }
-
-    if (nombre && correoElectronico && producto && cantidad && cantidad >= 1 && valor && valor >= 0) {
-        alert("el precio final es: " + precio)
+    } else {
+        agregarProducto();
+        alert("el producto ha sido agregado");
     }
 });
-
-let count = 0;
-
-function buttonClick() {
-    count++;
-    if (count >= 10) {
-        document.getElementById("myButton").disabled = true;
-        alert("JAJAAJAJAJAJAJAJAJAJ no me podes tocar mas")
+function mostrarProductos() {
+    if (Productos.length === 0) {
+        alert('No hay productos.');
+    } else {
+        let productosString = Productos.map(producto => `ID: ${producto.id}, Nombre: ${producto.nombre}, Cantidad: ${producto.cantidad}, Valor: ${producto.valor}`).join('\n');
+        alert(productosString);
+    }
+}
+function eliminarProducto() {
+    var id = document.getElementById('id').value;
+    var productoExistente = Productos.findIndex(producto => producto.id === id);
+    if (productoExistente !== -1) {
+        Productos.splice(productoExistente, 1);
+        alert('Producto eliminado.');
+    } else {
+        alert('No se encontró un producto con ese ID.');
     }
 }
 
-document.getElementById("myButton").addEventListener("click", buttonClick);
+

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="navBar.css">
 </head>
-<body style="padding-top: 70px;">
+<body >
 
     <div class="navBar">
         <img src="https://i.pinimg.com/564x/ac/dc/fe/acdcfe54adc164b8c17046fdc711ffbe.jpg" class="logo">
@@ -19,25 +19,39 @@
     </div>  
     <div class="parent">
         
-            <form action="/submit_order" method="post" class="formulario">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name">
-                
-                <label for="email">Correo electrónico:</label>
-                <input type="email" id="email" name="email">
-                
-                <label for="product">Producto:</label>
-                <input type="text" id="product" name="product">
-                
-                <label for="quantity">Cantidad:</label>
-                <input type="number" id="quantity" name="quantity" min="1">
+        <form id="myForm" class="formulario">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name">
+            
+            <label for="id">id:</label>
+            <input type="text" id="id" name="id">
         
-                <label for="value">Valor del producto:</label>
-                <input type="number" id="value" name="value" min="0">
-                
-                <input type="submit" value="Realizar pedido" onsubmit="" >
-            </form>
-            <button id="myButton">Presiona aquí 10 veces</button>
+            <label for="quantity">Cantidad:</label>
+            <input type="number" id="quantity" name="quantity" min="1">
+        
+            <label for="value">Valor del producto:</label>
+            <input type="number" id="value" name="value" min="0">
+            
+            <input type="button" value="sumar Producto" onclick="agregarProducto()" >
+            <input type="button" value="Mostrar Productos" onclick="mostrarProductos()" >
+            <input type="button" value="Eliminar Producto" onclick="eliminarProducto()" >
+        </form>
+
+        <form id="carritoForm" class="formulario">
+            <label for="carritoId">ID:</label>
+            <input type="text" id="carritoId" name="carritoId">
+            
+            <label for="carritoNombre">Nombre:</label>
+            <input type="text" id="carritoNombre" name="carritoNombre">
+        
+            <label for="carritoCantidad">Cantidad:</label>
+            <input type="number" id="carritoCantidad" name="carritoCantidad" min="1">
+            
+            <input type="button" value="Agregar al carrito" onclick="agregarAlCarrito()" >
+            <input type="button" value="remover Del Carrito" onclick="removerDelCarrito()">
+            <input type="button" value="resultado" onclick="calcularPrecioTotal()">
+        </form>
+
     </div>
     
     <div class="footer">
@@ -45,5 +59,6 @@
     </div>
 
     <script src="/script.js"></script>
+    <script src="scriptCarrito.js"></script>
 </body>
 </html>
