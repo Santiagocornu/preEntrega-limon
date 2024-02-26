@@ -17,8 +17,12 @@
             <button>soy un boton de prueba</button>
         </div>
     </div>  
+    
     <div class="parent">
-        
+        <div>  
+            <input type="text" name="filtro" id="filtro">
+            <button onclick="buscarProducto(Productos, document.getElementById('filtro').value)"><img src="lupita" alt="lupita"></button>
+        </div>
         <form id="myForm" class="formulario">
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name">
