@@ -8,7 +8,7 @@ let Productos =JSON.parse(localStorage.getItem('Productos')) || [ { id: 1, nombr
 
 function agregarProducto() {
     let form = document.getElementById('myForm');
-    let id = form.id.value;
+    let id = Number(form.id.value);
     let cantidad = Number(form.quantity.value);
     let precio = Number(form.value.value);
     let nombre = form.name.value;
@@ -30,39 +30,33 @@ function agregarProducto() {
     localStorage.setItem('Productos', JSON.stringify(Productos));
     alert('Producto agregado exitosamente!');
 }
-function agregarProducto(nombre, id, cantidad, precio, imagen) {
-    let productoExistente = Productos.find(producto => producto.id === id);
-    if (productoExistente) {
-        alert('El producto con este ID ya existe.');
-        return;
-    }
-    let nuevoProducto = {
-        id: id,
-        nombre: nombre,
-        precio: precio,
-        cantidad: cantidad,
-        imagen: imagen
-    };
-    Productos.push(nuevoProducto);
-    localStorage.setItem('Productos', JSON.stringify(Productos));
-    alert('Producto agregado exitosamente!');
-}
-
-function handleFormSubmit(event) {
-    event.preventDefault(); 
+function agregarProducto() {
     let nombre = document.getElementById('name').value;
     let id = document.getElementById('id').value;
     let cantidad = Number(document.getElementById('quantity').value);
     let precio = Number(document.getElementById('value').value);
     let imagen = document.getElementById('imagen').value;
-
     if (!nombre || !id || !cantidad || cantidad < 1 || !precio || precio < 0 || !imagen) {
         alert('Falta rellenar un espacio.');
     } else {
-        agregarProducto(nombre, id, cantidad, precio, imagen);
-        alert("el producto ha sido agregado");
+        let productoExistente = Productos.find(producto => producto.id === id);
+        if (productoExistente) {
+            alert('El producto con este ID ya existe.');
+            return;
+        }
+        let nuevoProducto = {
+            id: id,
+            nombre: nombre,
+            precio: precio,
+            cantidad: cantidad,
+            imagen: imagen
+        };
+        Productos.push(nuevoProducto);
+        localStorage.setItem('Productos', JSON.stringify(Productos));
+        alert('Producto agregado exitosamente!');
     }
 }
+
 
 
 function mostrarProductos() {

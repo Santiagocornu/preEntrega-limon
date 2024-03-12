@@ -5,7 +5,7 @@ let formulario= `
     <input type="text" id="name" name="name">
     
     <label for="id">id:</label>
-    <input type="text" id="id" name="id">
+    <input type="number" id="id" name="id">
 
     <label for="imagen">imagen del producto:</label>
     <input type="text" id="imagen" name="imagen" min="0">
@@ -47,21 +47,21 @@ function showCarritoForm() {
     document.getElementById('formContainer').innerHTML = carritoForm;
 }
 
-let productCardHTML = ''; 
-
-Productos.forEach(producto => {
-    let card = `
-    <div class="product-card">
-        <img src="${producto.imagen}" alt="${producto.nombre}">
-        <h2>${producto.nombre}</h2>
-        <p>ID: ${producto.id}</p>
-        <p>Precio: ${producto.precio}</p>
-        <p>Cantidad: ${producto.cantidad}</p>
-    </div>
-    `;
-    productCardHTML += card;
-});
-
 function showProductCard(){
+    let productCardHTML = ''; 
+
+    Productos.forEach(producto => {
+        let card = `
+        <div class="product-card">
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <h2>${producto.nombre}</h2>
+            <p>ID: ${producto.id}</p>
+            <p>Precio: ${producto.precio}</p>
+            <p>Cantidad: ${producto.cantidad}</p>
+        </div>
+        `;
+        productCardHTML += card;
+    });
+
     document.getElementById('formContainer').innerHTML = productCardHTML;
 }
