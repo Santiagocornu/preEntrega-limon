@@ -40,6 +40,7 @@ let carritoForm = `
     <input type="button" value="Agregar al carrito" onclick="agregarAlCarrito()" >
     <input type="button" value="remover Del Carrito" onclick="removerDelCarrito()">
     <input type="button" value="resultado" onclick="calcularPrecioTotal()">
+    <input type="button" value="eliminar" onclick="vaciarCarrito()">
 </form>
 `;
 

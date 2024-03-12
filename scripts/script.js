@@ -16,7 +16,7 @@ function agregarProducto() {
 
     let productoExistente = Productos.find(producto => producto.id === id);
     if (productoExistente) {
-        alert('El producto con este ID ya existe.');
+        Swal.fire('El producto con este ID ya existe.');
         return;
     }
     let nuevoProducto = {
@@ -28,7 +28,7 @@ function agregarProducto() {
     };
     Productos.push(nuevoProducto);
     localStorage.setItem('Productos', JSON.stringify(Productos));
-    alert('Producto agregado exitosamente!');
+    Swal.fire('Producto agregado exitosamente!');
 }
 function agregarProducto() {
     let nombre = document.getElementById('name').value;
@@ -37,11 +37,11 @@ function agregarProducto() {
     let precio = Number(document.getElementById('value').value);
     let imagen = document.getElementById('imagen').value;
     if (!nombre || !id || !cantidad || cantidad < 1 || !precio || precio < 0 || !imagen) {
-        alert('Falta rellenar un espacio.');
+        Swal.fire('Falta rellenar un espacio.');
     } else {
         let productoExistente = Productos.find(producto => producto.id === id);
         if (productoExistente) {
-            alert('El producto con este ID ya existe.');
+            Swal.fire('El producto con este ID ya existe.');
             return;
         }
         let nuevoProducto = {
@@ -53,7 +53,7 @@ function agregarProducto() {
         };
         Productos.push(nuevoProducto);
         localStorage.setItem('Productos', JSON.stringify(Productos));
-        alert('Producto agregado exitosamente!');
+        Swal.fire('Producto agregado exitosamente!');
     }
 }
 
@@ -61,10 +61,10 @@ function agregarProducto() {
 
 function mostrarProductos() {
     if (Productos.length === 0) {
-        alert('No hay productos.');
+        Swal.fire('No hay productos.');
     } else {
         let productosString = Productos.map(producto => `ID: ${producto.id}, Nombre: ${producto.nombre}, Cantidad: ${producto.cantidad}, Valor: ${producto.precio}, Imagen: ${producto.imagen}`).join('\n');
-        alert(productosString);
+        Swal.fire(productosString);
     }
 }
 
@@ -74,24 +74,24 @@ function eliminarProducto() {
     if (productoExistente !== -1) {
         Productos.splice(productoExistente, 1);
         localStorage.setItem('Productos', JSON.stringify(Productos));
-        alert('Producto eliminado.');
+        Swal.fire('Producto eliminado.');
     } else {
-        alert('No se encontró un producto con ese ID.');
+        Swal.fire('No se encontró un producto con ese ID.');
     }
 }
 
 function buscarProducto(arr, filtro) {
     if (filtro.trim() === "") {
-        alert("Por favor, ingresa un valor válido.");
+        Swal.fire("Por favor, ingresa un valor válido.");
         return;
     }
     const encontrado = arr.find((el) => {
         return el.nombre.includes(filtro);
     });
     if (encontrado === undefined) {
-        alert("No se encontró ningún producto con ese nombre.");
+        Swal.fire("No se encontró ningún producto con ese nombre.");
     } else {
-        alert(JSON.stringify(encontrado, null, 2));
+        Swal.fire(JSON.stringify(encontrado, null, 2));
     }
 }
 
