@@ -41,6 +41,7 @@ let carritoForm = `
     <input type="button" value="remover Del Carrito" onclick="removerDelCarrito()">
     <input type="button" value="resultado" onclick="calcularPrecioTotal()">
     <input type="button" value="eliminar" onclick="vaciarCarrito()">
+    <input type="button" value="realizar pedido" onclick="realizarPedido()">
 </form>
 `;
 
@@ -66,3 +67,27 @@ function showProductCard(){
 
     document.getElementById('formContainer').innerHTML = productCardHTML;
 }
+
+function showOrderCard() {
+    let orderCardHTML = ''; 
+
+    Pedidos.forEach(pedido => {
+        let card = `
+        <div class="order-card">
+            <h2>Pedido ID: ${pedido.id}</h2>
+            ${pedido.carrito.map(producto => `
+                <div class="product-info">
+                    <p>Producto ID: ${producto.id}</p>
+                    <p>Nombre: ${producto.nombre}</p>
+                    <p>Cantidad: ${producto.cantidad}</p>
+                    <p>Precio: ${producto.valor}</p>
+                </div>
+            `).join('')}
+        </div>
+        `;
+        orderCardHTML += card;
+    });
+
+    document.getElementById('formContainer').innerHTML = orderCardHTML;
+}
+
