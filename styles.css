@@ -1,5 +1,8 @@
-* {
-    margin:0;
+*{
+    margin: 0%;
+}
+body {
+    margin-top: 70px; 
 }
 .parent {
     background-color: #bfff00;
