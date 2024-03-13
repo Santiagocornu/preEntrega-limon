@@ -16,9 +16,9 @@ let formulario= `
     <label for="value">Valor del producto:</label>
     <input type="number" id="value" name="value" min="0">
     
-    <input type="button" value="sumar Producto" onclick="agregarProducto()">
-    <input type="button" value="Mostrar Productos" onclick="mostrarProductos()" >
-    <input type="button" value="Eliminar Producto" onclick="eliminarProducto()" >
+    <input type="button" value="sumar Producto" onclick="AgregarProducto()">
+    <input type="button" value="Mostrar Productos" onclick="MostrarProductos()" >
+    <input type="button" value="Eliminar Producto" onclick="EliminarProducto()" >
 </form>
 `;
 

@@ -6,6 +6,30 @@
     <link rel="stylesheet" type="text/css" href="/styles.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="navBar.css">
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+    
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyDaMmpzQgm-oGpdQRBxk--T5gd_zBUMk-Y",
+          authDomain: "hofu-sushi.firebaseapp.com",
+          projectId: "hofu-sushi",
+          storageBucket: "hofu-sushi.appspot.com",
+          messagingSenderId: "506545650441",
+          appId: "1:506545650441:web:e4652bd68fb766832b71d8",
+          measurementId: "G-Z4HC4JX7Q0"
+        };
+        // Initialize Firebase
+        var firebase = firebase.default;
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.database();
+    </script>
+
+    <script src="/scripts/scriptCarrito.js"></script>
+    <script src="/scripts/pedidos.js"></script>
+    <script src="scripts/link.js"></script>
 </head>
 <body >
 
@@ -26,11 +50,5 @@
         <p>Mi pie de página</p>
     </div>
     
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script src="/scripts/script.js"></script>
-    <script src="/scripts/scriptCarrito.js"></script>
-    <script src="/scripts/pedidos.js"></script>
-    <script src="scripts/link.js"></script>
 </body>
 </html>

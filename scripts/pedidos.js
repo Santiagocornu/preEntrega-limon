@@ -1,8 +1,8 @@
 
-let Pedidos = [];
+let Pedidos = JSON.parse(localStorage.getItem('Pedidos')) || [];
 let idPedido = 0;
 
-window.realizarPedido = function() {
+realizarPedido = function() {
     if (Carrito.length === 0) {
         Swal.fire('El carrito está vacío.');
         return;

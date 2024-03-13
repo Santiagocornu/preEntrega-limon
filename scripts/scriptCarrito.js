@@ -13,26 +13,32 @@ function agregarAlCarrito() {
     let productoExistente = Productos.find(producto => producto.id == id);
     if (productoExistente) {
         if (productoExistente.cantidad >= cantidad) {
-            let objeto = {
-                id: productoExistente.id,
-                cantidad: cantidad,
-                valor: productoExistente.precio,
-                nombre: productoExistente.nombre,
-                imagen: productoExistente.imagen, 
-            };
+            let productoEnCarrito = Carrito.find(producto => producto.id == id);
 
-            Carrito.push(objeto);
+            if (productoEnCarrito) {
+                productoEnCarrito.cantidad += cantidad;
+            } else {
+                let objeto = {
+                    id: productoExistente.id,
+                    cantidad: cantidad,
+                    valor: productoExistente.precio,
+                    nombre: productoExistente.nombre,
+                    imagen: productoExistente.imagen, 
+                };
+
+                Carrito.push(objeto);
+            }
+
             console.log(Carrito);
 
             productoExistente.cantidad -= cantidad;
 
-            
             localStorage.setItem('Carrito', JSON.stringify(Carrito));
         } else {
-            Swal.fire('El producto con este ID no existe.');
+            Swal.fire('No hay suficiente cantidad del producto en el inventario.');
         }
     } else {
-        swal.fire('No hay suficiente cantidad del producto en el inventario.');
+        Swal.fire('El producto con este ID no existe.');
     }
 }
 
